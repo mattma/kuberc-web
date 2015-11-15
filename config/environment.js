@@ -40,7 +40,7 @@ module.exports = function(environment) {
 
     'emberSimpleAuth': {
       authorizer: 'authorizer:local'
-      // crossOriginWhitelist: [`http://${localhost}:3002`, 'http://mdev.wiremint.com']
+      // crossOriginWhitelist: [`http://${localhost}:3002`]
     },
 
     i18n: {
