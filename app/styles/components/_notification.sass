@@ -1,0 +1,191 @@
+// ------------------------------------------------------------
+// Notifications
+//
+// Styles for notifications
+//
+// * Wrapper
+// * Base Notification
+// * Individual Notifications
+// ------------------------------------------------------------
+
+$settings-menu-transition: 0.4s
+$settings-menu-bezier: 0.1, 0.7, 0.1, 1
+$i-settings: "\e008"
+$i-check: "\e043"
+$i-error: "\e035"
+$i-idea: "\e00e"
+
+%icon-base
+  font-family: 'TSIcons' !important
+  text-transform: none !important
+  line-height: 1
+  font-weight: normal !important
+  font-style: normal !important
+  font-variant: normal !important
+
+  speak: none
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+// The Icon (before) Mixin
+// --------------------------------------------------
+
+=icon($char, $size: 1.4em, $color: "")
+  &:before
+    @extend %icon-base
+    content: "#{$char}"
+    font-size: $size
+    @if $color != ""
+      color: $color
+    @content
+  &:hover
+    text-decoration: none
+
+// The Icon (after) Mixin
+// --------------------------------------------------
+
+=icon-after($char, $size: 1.4em, $color: "")
+  &:after
+    @extend %icon-base
+    content: "#{$char}"
+    font-size: $size
+    @if $color != ""
+      color: $color
+    @content
+  &:hover
+    text-decoration: none
+
+.notifications
+  @media (max-width: 400px)
+    position: fixed
+    bottom: 49px
+    left: 0
+    right: 0
+    z-index: 9999
+    transition: transform $settings-menu-transition cubic-bezier($settings-menu-bezier)
+    // This selector ends up being `body.settings-menu-expanded .notifications`
+    body.settings-menu-expanded &
+      transform: translate3d(100%, 0px, 0px)
+  @media (min-width: 401px)
+    position: absolute
+    bottom: 36px
+    left: 0
+    z-index: 980
+    width: 300px
+    transition: transform $settings-menu-transition cubic-bezier($settings-menu-bezier)
+    // This selector ends up being `body.settings-menu-expanded .notifications`
+    body.settings-menu-expanded &
+      transform: translate3d(350px, 0px, 0px)
+
+// Base Notification
+// --------------------------------------------------
+
+%notification
+  +icon($i-settings)
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 48px
+    padding: 0
+    line-height: 45px
+    text-align: center
+    color: rgba(255, 255, 255, 0.8)
+    background: rgba(0, 0, 0, 0.1)
+
+  width: 100%
+  min-height: 40px
+  max-height: 253px
+  margin: 0 0 15px 0
+  color: rgba(255, 255, 255, 0.9)
+  background: $blue
+  position: relative
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 5px
+  transform: translateZ(0)
+  @media (max-width: 400px)
+    margin-bottom: 1px
+  .notification-message
+    display: block
+    padding: 10px 35px 10px 60px
+    max-height: 253px
+    overflow: auto
+    font-size: 1.4em
+    line-height: 1.6em
+    -webkit-overflow-scrolling: touch
+  .close
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    width: 34px
+    height: 100%
+    color: rgba(255, 255, 255, 0.6)
+
+    // @TODO: Clean up and now it is just a hack
+    // +icon-after($i-x)
+    //   padding: 10px
+    //   position: absolute
+    //   top: 4px
+    //   right: 1px
+    font-size: 2em
+    .icon
+      +position(a, 12, 12, r)
+    // @end of the hack: overwrite the notification icon
+
+    &:hover
+      color: #fff
+
+  a
+    color: inherit
+    text-decoration: underline
+
+//%notification
+
+//
+// Individual Notifications
+// --------------------------------------------------
+
+%hacks
+  .notification-info-icon
+    font-size: 2em
+    +position(a, 14, 15)
+
+.notification-success
+  @extend %notification
+  background: $green
+  +icon($i-check)
+    // @TODO: Clean up and now it is just a hack
+    content: ''
+  // need to remove %hacks extension
+  @extend %hacks
+  &.notification-passive
+    animation: fade-out 1s linear
+    animation-delay: 3s
+    animation-iteration-count: 1
+    animation-fill-mode: forwards
+  &.notification-passive:hover
+    animation: fade-in-snap 0.2s linear
+
+.notification-error
+  @extend %notification
+  +icon($i-error)
+    // @TODO: Clean up and now it is just a hack
+    content: ''
+  // need to remove %hacks extension
+  @extend %hacks
+  // @end of the hack: overwrite the notification icon
+  background: $red
+
+.notification-warn
+  @extend %notification
+  +icon($i-idea)
+  background: $orange
+
+.notification-info
+  @extend %notification
+  +icon($i-idea)
+  background: $blue
+
+// Hide extra space taken up by update notification
+.update-available main
+  bottom: 56px

@@ -1,0 +1,55 @@
+@charset "UTF-8"
+/* =================== Stylesheet Info =================== */
+/* Stylesheet for Project Name */
+/* Version 1.0 modified on ${DATE} ${TIME} */
+/* Copyright©2015 Matt Ma Design */
+/* Senior Web Developer -- Matt Ma. ( matt@mattmadesign.com ) */
+/* http://www.mattmadesign.com */
+
+@import '../../bower_components/mvccss/framework/sass/_init'
+
+@import "components/_init"
+
+$helvetica: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif
+
+html, body
+  width: 100%
+  height: 100%
+
+body
+  background: #efeff4
+  min-height: 100%
+  +ffamily($helvetica)
+
+  &>div
+    height: 100%
+    min-height: 100%
+    position: relative
+
+*
+  box-sizing: border-box
+
+.liquid-container, .liquid-child
+  +box(100%, 100%)
+
+main
+  +box(100%, 100%)
+  min-height: 100%
+  +position(r)
+
+.goto-signup
+  +position(a, 5%, 0, b)
+  +box(100%, 30)
+  a
+    +box(100%, 100%)
+    +talign(c)
+    +fsize(1.4)
+    +lheight(30)
+    +color(#0c63ee)
+
+// Login page: forget password
+.common-text
+  padding: 0 10px
+  +fsize(1.3)
+  +color(#444)
+  +talign(c)

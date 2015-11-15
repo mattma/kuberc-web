@@ -1,0 +1,26 @@
+<div class="list">
+  <label class="item item-input">
+    <span class="input-label">{{t "form.phone"}}</span>
+    {{input type='text' value=identification autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"}}
+  </label>
+  <label class="item item-input">
+    <span class="input-label">{{t "form.password"}}</span>
+    {{input type='password' value=password}}
+  </label>
+</div>
+
+<div class="padding">
+  <button class="button button-block button-balanced" {{action 'validateAndAuthenticate'}}>
+    {{t "form.button.signin"}}
+  </button>
+</div>
+
+{{#link-to 'forgotten' class="common-text"}}
+  {{t "login.forgotten"}}
+{{/link-to}}
+
+<div class="goto-signup">
+  {{#link-to 'signup'}}
+    {{t "nav.signup"}}
+  {{/link-to}}
+</div>

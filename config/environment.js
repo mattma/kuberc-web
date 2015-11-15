@@ -27,14 +27,18 @@ module.exports = function(environment) {
       }
     },
 
+    api: {
+      "current": "v1beta1"
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
 
     'ember-simple-auth': {
-      routeAfterAuthentication: 'friends',
-      routeIfAlreadyAuthenticated: 'friends',
+      routeAfterAuthentication: 'dashboard',
+      routeIfAlreadyAuthenticated: 'dashboard',
       authenticationRoute: 'login'
     },
 
