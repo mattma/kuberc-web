@@ -68,6 +68,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
+    ENV.apiUrl = `http://${addresses[0]}:3002`;
     ENV['emberSimpleAuth'].crossOriginWhitelist = [`http://${localhost}:3002`];
   }
 
@@ -84,6 +85,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.apiUrl = '';
     ENV['simple-auth'].crossOriginWhitelist = [''];
   }
 

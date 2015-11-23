@@ -15,7 +15,11 @@ let Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.route('login');
-  this.route('forgotten');
   this.route('signup');
+  this.route('login');
+  this.route('logout');
+
+  this.route('forgotten');
+  this.route('dashboard');
+  this.route('app-dashboard');
 });

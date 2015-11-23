@@ -6,7 +6,7 @@ export default Ember.Component.extend(ValidationEngine, {
   rememberMe: false,
   validationType: 'signin',
 
-  notifications: Ember.inject.service(),
+  notifications: service(),
   session: service('session'),
 
   rememberMeChanged: function () {
