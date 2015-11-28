@@ -53,10 +53,10 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       // Allow inline styles
-      'style-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
       'connect-src': `'self' http://${localhost}:3002 ws://localhost:35729 ws://0.0.0.0:35729`,
       'script-src': "'self' 'unsafe-inline'",
-      'font-src': "'self' data:",
+      'font-src': "'self' https://fonts.gstatic.com data:",
       'object-src': "http://localhost:4200"
     }
   };
