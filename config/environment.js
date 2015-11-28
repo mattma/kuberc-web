@@ -48,7 +48,7 @@ module.exports = function(environment) {
     },
 
     i18n: {
-      defaultLocale: 'zh-cn'
+      defaultLocale: 'en-us'
     },
 
     contentSecurityPolicy: {

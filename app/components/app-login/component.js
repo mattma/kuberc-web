@@ -3,6 +3,7 @@ import ValidationEngine from 'dashboard/mixins/validation-engine';
 const { service } = Ember.inject;
 
 export default Ember.Component.extend(ValidationEngine, {
+  classNames: ['page-login'],
   rememberMe: false,
   validationType: 'signin',
 

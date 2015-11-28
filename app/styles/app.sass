@@ -8,9 +8,9 @@
 
 @import '../../bower_components/mvccss/framework/sass/_init'
 
-@import "components/_init"
-
 $helvetica: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif
+
+@import "components/_init"
 
 html, body
   width: 100%
@@ -19,7 +19,8 @@ html, body
 body
   background: #f9f9f9
   min-height: 100%
-  +ffamily($helvetica)
+  font-family: 'Ubuntu', $helvetica
+  color: #4E5E6A
 
   &>div
     height: 100%
@@ -37,19 +38,8 @@ main
   min-height: 100%
   +position(r)
 
-.goto-signup
-  +position(a, 5%, 0, b)
-  +box(100%, 30)
-  a
-    +box(100%, 100%)
-    +talign(c)
-    +fsize(1.4)
-    +lheight(30)
-    +color(#0c63ee)
+p, input, button
+  +fweight(400)
+  font-family: 'Ubuntu', $helvetica
 
-// Login page: forget password
-.common-text
-  padding: 0 10px
-  +fsize(1.3)
-  +color(#444)
-  +talign(c)
+@import "pages/_init"

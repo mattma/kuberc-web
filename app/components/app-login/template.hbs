@@ -1,26 +1,37 @@
-<div class="list">
-  <label class="item item-input">
-    <span class="input-label">{{t "form.phone"}}</span>
-    {{input type='text' value=identification autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"}}
-  </label>
-  <label class="item item-input">
-    <span class="input-label">{{t "form.password"}}</span>
-    {{input type='password' value=password}}
-  </label>
-</div>
+<h1>
+  <a href="#" title="kuberc">Kuberc</a>
+</h1>
 
-<div class="padding">
-  <button class="button button-block button-balanced" {{action 'validateAndAuthenticate'}}>
-    {{t "form.button.signin"}}
-  </button>
-</div>
+<p>
+  Please log into your account.
+</p>
 
-{{#link-to 'forgotten' class="common-text"}}
-  {{t "login.forgotten"}}
-{{/link-to}}
+<form>
+  <div>
+    {{input type='text' value=identification autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder=(t 'form.phone')}}
+  </div>
+  <div>
+    {{input type='password' value=password placeholder=(t 'form.password')}}
+  </div>
+  <div>
+    <button class="btn btn-success btn-block" {{action 'validateAndAuthenticate'}}>
+      {{t "form.button.signin"}}
+    </button>
+  </div>
+</form>
 
-<div class="goto-signup">
-  {{#link-to 'signup'}}
+<p class="link-forgotten">
+  {{#link-to 'forgotten'}}
+    {{t "login.forgotten"}}
+  {{/link-to}}
+</p>
+
+<div class="link-signup">
+  {{#link-to 'signup' class="btn btn-default btn-block"}}
     {{t "nav.signup"}}
   {{/link-to}}
 </div>
+
+<p class="site-copyright">
+  2015 &copy; Kuberc. Made with &hearts; by Kuberc Team.
+</p>
