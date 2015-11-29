@@ -12,6 +12,7 @@
     "mvccss": "mattma/mvc-css#0.4.0",
     "validator-js": "~4.0.5",
     "ember-mocha": "~0.8.6",
-    "sinonjs": "~1.17.1"
+    "sinonjs": "~1.17.1",
+    "font-awesome": "~4.5.0"
   }
 }

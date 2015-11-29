@@ -26,6 +26,7 @@ module.exports = function(defaults) {
 
   app.import('bower_components/validator-js/validator.js');
   app.import('bower_components/mvccss/framework/reset.css');
+  app.import('bower_components/font-awesome/css/font-awesome.min.css');
 
   return app.toTree();
 };
