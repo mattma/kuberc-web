@@ -1,10 +1,15 @@
 <section class="js-notification">
   <div class='notification-info-icon'>
-    {{!ion-icon "alert-circled"}}
+    {{#if (eq message.type "error")}}
+      <i class="fa fa-exclamation-triangle"></i>
+    {{else if (eq message.type "success")}}
+      <i class="fa fa-check"></i>
+    {{/if}}
   </div>
   <span class="notification-message">
     {{{message.message}}}
   </span>
-  {{!-- <button class="close" {{action "closeNotification"}}><span class="hidden">Close</span></button> --}}
-  <button class="close" {{action "closeNotification"}}>{{!ion-icon "close-round"}}</button>
+  <button class="close" {{action "closeNotification"}}>
+    <i class="fa fa-times fa-1g"></i>
+  </button>
 </section>

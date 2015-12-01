@@ -1,59 +1,8 @@
 // ------------------------------------------------------------
 // Notifications
-//
-// Styles for notifications
-//
-// * Wrapper
-// * Base Notification
-// * Individual Notifications
-// ------------------------------------------------------------
 
 $settings-menu-transition: 0.4s
 $settings-menu-bezier: 0.1, 0.7, 0.1, 1
-$i-settings: "\e008"
-$i-check: "\e043"
-$i-error: "\e035"
-$i-idea: "\e00e"
-
-%icon-base
-  font-family: 'TSIcons' !important
-  text-transform: none !important
-  line-height: 1
-  font-weight: normal !important
-  font-style: normal !important
-  font-variant: normal !important
-
-  speak: none
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-
-// The Icon (before) Mixin
-// --------------------------------------------------
-
-=icon($char, $size: 1.4em, $color: "")
-  &:before
-    @extend %icon-base
-    content: "#{$char}"
-    font-size: $size
-    @if $color != ""
-      color: $color
-    @content
-  &:hover
-    text-decoration: none
-
-// The Icon (after) Mixin
-// --------------------------------------------------
-
-=icon-after($char, $size: 1.4em, $color: "")
-  &:after
-    @extend %icon-base
-    content: "#{$char}"
-    font-size: $size
-    @if $color != ""
-      color: $color
-    @content
-  &:hover
-    text-decoration: none
 
 .notifications
   @media (max-width: 400px)
@@ -81,17 +30,11 @@ $i-idea: "\e00e"
 // --------------------------------------------------
 
 %notification
-  +icon($i-settings)
-    position: absolute
-    top: 0
-    left: 0
-    height: 100%
-    width: 48px
-    padding: 0
-    line-height: 45px
-    text-align: center
-    color: rgba(255, 255, 255, 0.8)
+  &:before
+    +position(a, 0, 0)
+    +box(48, 100%)
     background: rgba(0, 0, 0, 0.1)
+    content: ''
 
   width: 100%
   min-height: 40px
@@ -121,12 +64,6 @@ $i-idea: "\e00e"
     height: 100%
     color: rgba(255, 255, 255, 0.6)
 
-    // @TODO: Clean up and now it is just a hack
-    // +icon-after($i-x)
-    //   padding: 10px
-    //   position: absolute
-    //   top: 4px
-    //   right: 1px
     font-size: 2em
     .icon
       +position(a, 12, 12, r)
@@ -138,8 +75,6 @@ $i-idea: "\e00e"
   a
     color: inherit
     text-decoration: underline
-
-//%notification
 
 //
 // Individual Notifications
@@ -153,9 +88,6 @@ $i-idea: "\e00e"
 .notification-success
   @extend %notification
   background: $green
-  +icon($i-check)
-    // @TODO: Clean up and now it is just a hack
-    content: ''
   // need to remove %hacks extension
   @extend %hacks
   &.notification-passive
@@ -168,9 +100,6 @@ $i-idea: "\e00e"
 
 .notification-error
   @extend %notification
-  +icon($i-error)
-    // @TODO: Clean up and now it is just a hack
-    content: ''
   // need to remove %hacks extension
   @extend %hacks
   // @end of the hack: overwrite the notification icon
@@ -178,14 +107,8 @@ $i-idea: "\e00e"
 
 .notification-warn
   @extend %notification
-  +icon($i-idea)
   background: $orange
 
 .notification-info
   @extend %notification
-  +icon($i-idea)
   background: $blue
-
-// Hide extra space taken up by update notification
-.update-available main
-  bottom: 56px
