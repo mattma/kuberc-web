@@ -2,7 +2,9 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    // validator.js library, make it global
+    "validator"
   ],
   "browser": true,
   "boss": true,
