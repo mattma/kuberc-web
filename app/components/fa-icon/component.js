@@ -13,7 +13,8 @@ const FaIconComponent = Ember.Component.extend({
   classNames: ['fa'],
 
   classNameBindings: [
-    'iconCssClass'
+    'iconCssClass',
+    'sizeCssClass'
   ],
 
   @computed('icon', 'params.[]')
@@ -23,6 +24,17 @@ const FaIconComponent = Ember.Component.extend({
       return match(icon, /^fa-/) ? icon : `fa-${icon}`;
     }
   },
+
+  @computed('size')
+  sizeCssClass(size) {
+    if (match(size, /^fa-/)) {
+      return size;
+    } else if (match(size, /(?:lg|x)$/)) {
+      return `fa-${size}`;
+    } else {
+      return `fa-${size}x`;
+    }
+  }
 });
 
 FaIconComponent.reopenClass({

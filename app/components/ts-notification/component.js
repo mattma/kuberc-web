@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['js-bb-notification'],
+  classNames: ['notification'],
   classNameBindings: ['typeClass'],
 
   message: null,
@@ -23,10 +23,10 @@ export default Ember.Component.extend({
       dismissible = message.dismissible;
     }
 
-    classes += 'notification-' + type;
+    classes += type;
 
     if (type === 'success' && dismissible !== false) {
-      classes += ' notification-passive';
+      classes += ' passive';
     }
 
     return classes;
