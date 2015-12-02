@@ -1,15 +1,15 @@
 <section class="js-notification">
   <div class='notification-info-icon'>
     {{#if (eq message.type "error")}}
-      <i class="fa fa-exclamation-triangle"></i>
+      {{fa-icon "exclamation-triangle"}}
     {{else if (eq message.type "success")}}
-      <i class="fa fa-check"></i>
+      {{fa-icon "check"}}
     {{/if}}
   </div>
   <span class="notification-message">
     {{{message.message}}}
   </span>
   <button class="close" {{action "closeNotification"}}>
-    <i class="fa fa-times fa-1g"></i>
+    {{fa-icon "times"}}
   </button>
 </section>
