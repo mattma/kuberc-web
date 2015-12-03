@@ -1,18 +1,27 @@
 import Ember from 'ember';
+const { service } = Ember.inject;
 
 export default Ember.Component.extend({
   classNames: ['notification'],
   classNameBindings: ['typeClass'],
 
+  notifications: service(),
+
   message: null,
 
-  notifications: Ember.inject.service(),
+  didInsertElement () {
+    this.$().on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', (event) => {
+      if (event.originalEvent.animationName === 'fade-out') {
+        this.get('notifications').closeNotification(this.get('message'));
+      }
+    });
+  },
 
   typeClass: Ember.computed(function () {
-    var classes = '';
-    var message = this.get('message');
-    var type;
-    var dismissible;
+    const message = this.get('message');
+    let classes = '';
+    let type;
+    let dismissible;
 
     // Check to see if we're working with a DS.Model or a plain JS object
     if (typeof message.toJSON === 'function') {
@@ -32,16 +41,8 @@ export default Ember.Component.extend({
     return classes;
   }),
 
-  didInsertElement: function () {
-    this.$().on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', (event) => {
-      if (event.originalEvent.animationName === 'fade-out') {
-        this.get('notifications').closeNotification(this.get('message'));
-      }
-    });
-  },
-
   actions: {
-    closeNotification: function () {
+    closeNotification () {
       this.get('notifications').closeNotification(this.get('message'));
     }
   }
