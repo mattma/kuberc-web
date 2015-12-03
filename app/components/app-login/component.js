@@ -10,7 +10,7 @@ export default Ember.Component.extend(ValidationEngine, {
   notifications: service(),
   session: service('session'),
 
-  rememberMeChanged: function () {
+  rememberMeChanged () {
     console.log('remember me called');
     this.get('session.store').cookieExpirationTime = this.get('rememberMe') ?
       (14 * 24 * 60 * 60) : null;
@@ -22,7 +22,6 @@ export default Ember.Component.extend(ValidationEngine, {
       // if authentication fails a rejected promise returned from "initializers/authentication"
       // Application/route.js#sessionAuthenticationFailed will handle all error cases
       this.get('session').authenticate('authenticator:local', data);
-        // .catch(err => this.sendAction('fail', err));
     },
 
     validateAndAuthenticate () {

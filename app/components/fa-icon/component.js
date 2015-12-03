@@ -9,9 +9,7 @@ function match (object, regex) {
 
 const FaIconComponent = Ember.Component.extend({
   tagName: 'i',
-
   classNames: ['fa'],
-
   classNameBindings: [
     'iconCssClass',
     'sizeCssClass'

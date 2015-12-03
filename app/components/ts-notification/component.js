@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import computed from 'ember-computed-decorators';
 const { service } = Ember.inject;
 
 export default Ember.Component.extend({
@@ -17,7 +18,8 @@ export default Ember.Component.extend({
     });
   },
 
-  typeClass: Ember.computed(function () {
+  @computed
+  typeClass () {
     const message = this.get('message');
     let classes = '';
     let type;
@@ -32,14 +34,12 @@ export default Ember.Component.extend({
       dismissible = message.dismissible;
     }
 
-    classes += type;
-
     if (type === 'success' && dismissible !== false) {
-      classes += ' passive';
+      classes += ` passive`;
     }
 
-    return classes;
-  }),
+    return `${type}${classes}`;
+  },
 
   actions: {
     closeNotification () {
