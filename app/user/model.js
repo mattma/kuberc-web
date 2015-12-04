@@ -1,7 +1,5 @@
 import DS from 'ember-data';
-
-// http://emberjs.com/guides/models/defining-models/
-let attr = DS.attr;
+const { attr } = DS;
 
 export default DS.Model.extend({
   type: 'users',

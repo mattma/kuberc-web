@@ -1,9 +1,10 @@
 import DS from 'ember-data';
+const { attr } = DS;
 
-export default  DS.Model.extend({
-  dismissible: DS.attr('boolean'),
-  location:    DS.attr('string'),
-  status:      DS.attr('string'),
-  type:        DS.attr('string'),
-  message:     DS.attr('string')
+export default DS.Model.extend({
+  dismissible: attr('boolean'),
+  location:    attr('string'),
+  status:      attr('string'),
+  type:        attr('string'),
+  message:     attr('string')
 });
