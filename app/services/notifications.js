@@ -1,16 +1,16 @@
 import Ember from 'ember';
 import Notification from 'dashboard/notification/model';
+const { service } = Ember.inject;
 
 export default Ember.Service.extend({
   delayedNotifications: Ember.A(),
   content: Ember.A(),
   timeout: 3000,
 
-  i18n: Ember.inject.service(),
+  i18n: service(),
 
   pushObject (object) {
-    // object can be either a DS.Model or a plain JS object, so when working with
-    // it, we need to handle both cases.
+    // object can be either a DS.Model or a plain JS object, so when working with it, we need to handle both cases.
 
     // make sure notifications have all the necessary properties set.
     if (typeof object.toJSON === 'function') {

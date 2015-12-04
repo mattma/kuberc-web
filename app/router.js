@@ -1,16 +1,17 @@
 import Ember from 'ember';
 import config from './config/environment';
+const { service } = Ember.inject;
 
 let Router = Ember.Router.extend({
   location: config.locationType,
 
-  notifications: Ember.inject.service(),
+  notifications: service(),
 
   clearNotifications: Ember.on('didTransition', function () {
-      var notifications = this.get('notifications');
+    const notifications = this.get('notifications');
 
-      notifications.closePassive();
-      notifications.displayDelayed();
+    notifications.closePassive();
+    notifications.displayDelayed();
   })
 });
 
