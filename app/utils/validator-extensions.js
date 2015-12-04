@@ -1,14 +1,11 @@
 import Ember from 'ember';
+const {isBlank} = Ember;
 
 function init () {
   // Provide a few custom validators
-  validator.extend('empty', function (str) {
-    return Ember.isBlank(str);
-  });
+  validator.extend('empty', str => isBlank(str));
 
-  validator.extend('notContains', function (str, badString) {
-    return str.indexOf(badString) === -1;
-  });
+  validator.extend('notContains', (str, badString) => str.indexOf(badString) === -1);
 }
 
 export default {

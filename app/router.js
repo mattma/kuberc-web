@@ -18,8 +18,9 @@ let Router = Ember.Router.extend({
 export default Router.map(function() {
   this.route('signup');
   this.route('login');
-  this.route('logout');
-
   this.route('forgotten');
+
+  // AuthenticatedRoute is required
+  this.route('logout');
   this.route('dashboard');
 });
