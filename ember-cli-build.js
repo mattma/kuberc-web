@@ -4,6 +4,10 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var mergeTrees = require('broccoli-merge-trees');
 var pickFiles = require('broccoli-static-compiler');
 
+// Way to check the current environment
+// var environment = EmberApp.env();
+// var isProduction = environment === 'production';
+
 module.exports = function(defaults) {
   var fontTree = pickFiles('bower_components/font-awesome/fonts', {
     srcDir: '/',
@@ -38,6 +42,8 @@ module.exports = function(defaults) {
   app.import('bower_components/validator-js/validator.js');
   app.import('bower_components/mvccss/framework/reset.css');
   app.import('bower_components/font-awesome/css/font-awesome.min.css');
+
+  // app.env  can be used to assert environment
 
   return mergeTrees([app.toTree(), fontTree]);
 };

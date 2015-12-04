@@ -10,7 +10,7 @@ export default Ember.Component.extend(ValidationEngine, {
   notifications: service(),
   session: service('session'),
 
-  rememberMeChanged () {
+  rememberMeChanged: function() {
     console.log('remember me called');
     this.get('session.store').cookieExpirationTime = this.get('rememberMe') ?
       (14 * 24 * 60 * 60) : null;

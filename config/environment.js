@@ -86,7 +86,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.apiUrl = '';
-    ENV['simple-auth'].crossOriginWhitelist = [''];
+    ENV['emberSimpleAuth'].crossOriginWhitelist = [''];
   }
 
   return ENV;
