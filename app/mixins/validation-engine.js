@@ -65,13 +65,13 @@ var ValidationEngine = Ember.Mixin.create({
   // in that case the model will be the class that the ValidationEngine
   // was mixed into, i.e. the controller or Ember Data model.
   validators: {
-    signup:           SignupValidator,
-    signin:           SigninValidator,
+    signup: SignupValidator,
+    signin: SigninValidator,
     forgotten: ForgotValidator,
-    // setting:   SettingValidator,
+    // setting: SettingValidator,
     'reset-password': ResetPasswordValidator,
     'activation': ActivationValidator
-    // user:      UserValidator
+    // user: UserValidator
   },
 
   /**
@@ -87,7 +87,7 @@ var ValidationEngine = Ember.Mixin.create({
    *    the default value of `this`, the class that mixes in this mixin.
    */
   validate (opts) {
-    var model = opts.model || this;
+    let model = opts.model || this;
     var type = this.get('validationType');
     var validator = this.get('validators.' + type);
 
