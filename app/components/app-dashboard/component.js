@@ -5,5 +5,6 @@ const { service } = Ember.inject;
 export default Ember.Component.extend({
   sess: service('session-account'),
 
-  @alias('sess.sessionUser.content') sessionUser
+  // s: an object contains current login user info
+  @alias('sess.sessionUser.content') s
 });
