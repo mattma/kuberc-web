@@ -1,43 +1,27 @@
-// mixin used for routes that need to set a css className on the body tag
-// `routes/*.js`, common error: applied on `controller`, it won't work
-// @usage
-/*
- import styleBody from 'dashboard/mixins/style-body';
-
- var LoginRoute = Ember.Route.extend(styleBody, {
-  classNames: ['ts-login']
- });
-
- export default LoginRoute;
- */
 import Ember from 'ember';
+const {Mixin, run, $} = Ember;
 
-var StyleBodyMixin = Ember.Mixin.create({
-  activate: function () {
-    this._super();
+// mixin used for routes that need to set a css className on the body tag
+export default Mixin.create({
+  activate() {
+    this._super(...arguments);
 
-    var cssClasses = this.get('classNames');
-
+    let cssClasses = this.get('classNames');
     if (cssClasses) {
-      Ember.run.schedule('afterRender', null, function () {
-        cssClasses.forEach(function (curClass) {
-          Ember.$('body').addClass(curClass);
-        });
+      run.schedule('afterRender', null, () => {
+        cssClasses.forEach(curClass => $('body').addClass(curClass));
       });
     }
   },
 
-  deactivate: function () {
-    this._super();
+  deactivate() {
+    this._super(...arguments);
 
-    var cssClasses = this.get('classNames');
-
-    Ember.run.schedule('afterRender', null, function () {
-      cssClasses.forEach(function (curClass) {
-        Ember.$('body').removeClass(curClass);
+    let cssClasses = this.get('classNames');
+    if (cssClasses) {
+      run.schedule('afterRender', null, () => {
+        cssClasses.forEach(curClass => $('body').removeClass(curClass));
       });
-    });
+    }
   }
 });
-
-export default StyleBodyMixin;

@@ -6,7 +6,7 @@ export default Ember.Component.extend(ValidationEngine, {
   notifications: service(),
   session: service('session'),
 
-  classNames: ['page-login'],
+  tagName: 'section',
   validationType: 'signin',
 
   actions: {

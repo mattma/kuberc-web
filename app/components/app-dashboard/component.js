@@ -5,7 +5,5 @@ const { service } = Ember.inject;
 export default Ember.Component.extend({
   sess: service('session-account'),
 
-  classNames: ['page-dashboard'],
-
   @alias('sess.sessionUser.content') sessionUser
 });
