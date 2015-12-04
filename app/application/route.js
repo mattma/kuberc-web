@@ -11,5 +11,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.transitionTo(simpleAuthConfig.authenticationRoute);
     this.get('notifications')
       .showSuccess('notification.token_verification.success_clear_token', {delayed: true});
+  },
+
+  actions: {
+    logout () {
+      this.transitionTo('logout');
+    }
   }
 });
