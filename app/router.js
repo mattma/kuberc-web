@@ -3,9 +3,9 @@ import config from './config/environment';
 const { service } = Ember.inject;
 
 let Router = Ember.Router.extend({
-  location: config.locationType,
-
   notifications: service(),
+
+  location: config.locationType,
 
   clearNotifications: Ember.on('didTransition', function () {
     const notifications = this.get('notifications');
@@ -22,5 +22,4 @@ export default Router.map(function() {
 
   this.route('forgotten');
   this.route('dashboard');
-  this.route('app-dashboard');
 });

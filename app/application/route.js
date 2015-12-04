@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import simpleAuthConfig from 'ember-simple-auth/configuration';
-
 const { service } = Ember.inject;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
@@ -53,10 +52,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   actions: {
     // action will be triggered when user create an account 1st time
     // be triggered when user reset his/her password
-    sessionAuthenticationSucceededAndShowIntro () {
-      return this._populateCurrentUser()
-        .then(() => this.transitionTo('intro'));
-    },
+    // sessionAuthenticationSucceededAndShowIntro () {
+    //   return this._populateCurrentUser()
+    //     .then(() => this.transitionTo('intro'));
+    // },
 
     // log in error use case
     sessionAuthenticationFailed (err) {
