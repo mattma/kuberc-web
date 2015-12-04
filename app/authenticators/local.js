@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
 import ajax from 'dashboard/utils/ajax/ajax';
 const { service } = Ember.inject;
+const { RSVP } = Ember;
 
 export default Base.extend({
   session: service('session'),
@@ -13,7 +14,7 @@ export default Base.extend({
         token: credentials.session.token,
         name: credentials.session.name
       };
-      return Ember.RSVP.resolve(sessionData);
+      return RSVP.resolve(sessionData);
     } else {
       const url = '/login';
       const opts =  {
@@ -25,7 +26,7 @@ export default Base.extend({
       };
 
       // Need to return a promise because "login" need to wait for a promise object
-      return new Ember.RSVP.Promise((resolve, reject) => {
+      return new RSVP.Promise((resolve, reject) => {
         return ajax(url, opts)
           .then(resp => resolve({token: resp.session.token, name: resp.session.name}))
           .catch(err => reject(err));
@@ -35,7 +36,7 @@ export default Base.extend({
 
   invalidate (credentials) {
     // if (data.authenticated) can be check as well
-    return new Ember.RSVP.Promise(resolve => {
+    return new RSVP.Promise(resolve => {
       if (credentials.token && credentials.name) {
         delete credentials.token;
         delete credentials.name;
@@ -49,7 +50,7 @@ export default Base.extend({
   // trigger every time when user already login, resending the credentials back to the user sesson
   restore (credentials) {
     // if (credentials.authenticated) can be check as well
-    return new Ember.RSVP.Promise(
+    return new RSVP.Promise(
       (resolve, reject) => credentials.token && credentials.name ? resolve(credentials) : reject());
   }
 });

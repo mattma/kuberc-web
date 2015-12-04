@@ -47,30 +47,5 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.transitionTo(simpleAuthConfig.authenticationRoute);
     this.get('notifications')
       .showSuccess('notification.token_verification.success_clear_token', {delayed: true});
-  },
-
-  actions: {
-    // action will be triggered when user create an account 1st time
-    // be triggered when user reset his/her password
-    // sessionAuthenticationSucceededAndShowIntro () {
-    //   return this._populateCurrentUser()
-    //     .then(() => this.transitionTo('intro'));
-    // },
-
-    // log in error use case
-    sessionAuthenticationFailed (err) {
-      this.get('notifications').showAPIError(err);
-    },
-
-    sessionRequiresAuthentication () {
-      this._requiresAuthentication();
-    }
-
-    // When an authorization error occurs, it could be Server force user to logout
-    // authorizationFailed () {
-    //   this._super(...arguments);
-    //   this.get('notifications')
-    //     .showSuccess('notification.token_verification.invalidation', {delayed: true});
-    // }
   }
 });
