@@ -3,10 +3,10 @@ import computed from 'ember-computed-decorators';
 const { service } = Ember.inject;
 
 export default Ember.Component.extend({
+  notifications: service(),
+
   classNames: ['notification'],
   classNameBindings: ['typeClass'],
-
-  notifications: service(),
 
   message: null,
 

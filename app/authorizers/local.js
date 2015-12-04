@@ -8,11 +8,10 @@ export default Base.extend({
   session: service('session'),
 
   authorize (data, block) {
-    const isAuthenticated = this.get('session.isAuthenticated');
     const token = data.token;
     const authName = data.name;
 
-    if (isAuthenticated && !isEmpty(token) && !isEmpty(authName)) {
+    if (!isEmpty(token) && !isEmpty(authName) && this.get('session.isAuthenticated')) {
       block('AuthName', authName);
       block('Authorization', token);
     }

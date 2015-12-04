@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import { alias } from 'ember-computed-decorators';
 const { service } = Ember.inject;
 
 export default Ember.Component.extend({
-  classNames: ['page-dashboard'],
-  sessionAccount: service('session-account'),
+  sess: service('session-account'),
 
-  currentUser: Ember.computed.alias('sessionAccount.currentUser.content')
+  classNames: ['page-dashboard'],
+
+  @alias('sess.sessionUser.content') sessionUser
 });

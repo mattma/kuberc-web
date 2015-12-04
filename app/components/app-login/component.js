@@ -11,9 +11,6 @@ export default Ember.Component.extend(ValidationEngine, {
 
   actions: {
     authenticate () {
-      // close all notifications if any
-      this.get('notifications').closePassive();
-
       const data = this.getProperties('identification', 'password');
       // authenticators/local.js#authenticate will handle the validation
       this.get('session').authenticate('authenticator:local', data)
@@ -21,6 +18,9 @@ export default Ember.Component.extend(ValidationEngine, {
     },
 
     validateAndAuthenticate () {
+      // close all notifications if any
+      this.get('notifications').closePassive();
+
       this.validate({format: false})
         .then(() => this.send('authenticate'))
         .catch(err => this.sendAction('preAuthenticationFailed', err));

@@ -25,19 +25,19 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     return payload;
   },
 
-  urlForFindRecord(query, modelName, snapshot) {
+  urlForFindRecord (query, modelName, snapshot) {
     let url = this._super(...arguments);
     return this._processIncludes(url, snapshot);
   },
 
-  urlForFindAll(query, modelName, snapshot) {
+  urlForFindAll (query, modelName, snapshot) {
     let url = this._super(...arguments);
     return this._processIncludes(url, snapshot);
   },
 
   // allow each find/findRecord to fetch with `?include=` query param
   // Ex: this.store.findRecord('type', id, {adapterOptions: {include: 'relationships'}})
-  _processIncludes(url, snapshot) {
+  _processIncludes (url, snapshot) {
     let options = snapshot && snapshot.adapterOptions;
 
     if (options && options.include) {

@@ -3,11 +3,11 @@ import Notification from 'dashboard/notification/model';
 const { service } = Ember.inject;
 
 export default Ember.Service.extend({
+  i18n: service(),
+
   delayedNotifications: Ember.A(),
   content: Ember.A(),
   timeout: 3000,
-
-  i18n: service(),
 
   pushObject (object) {
     // object can be either a DS.Model or a plain JS object, so when working with it, we need to handle both cases.
@@ -55,26 +55,13 @@ export default Ember.Service.extend({
     }
   },
 
-  showAPIError(resp, options={}) {
+  showAPIError (resp, options={}) {
     this._isClosePassive(options);
 
     options.defaultErrorText = options.defaultErrorText ||
       'There was a problem on the server, please try again.';
 
     if (resp) {
-      // if (resp.jqXHR && resp.jqXHR.responseJSON) {
-      //   if (resp.jqXHR.responseJSON.error) {
-      //     console.log('resp.jqXHR.responseJSON.error: ', resp.jqXHR.responseJSON.error);
-      //     this.showError(resp.jqXHR.responseJSON.error, options);
-      //   } else if (resp.jqXHR.responseJSON.message) {
-      //     console.log('resp.jqXHR.responseJSON.message: ', resp.jqXHR.responseJSON.message);
-      //     this.showError(resp.jqXHR.responseJSON.message, options);
-      //   } else if (resp.jqXHR.responseJSON.errors) {
-      //     console.log('resp.jqXHR.responseJSON.errors: ', resp.jqXHR.responseJSON.errors);
-      //     this.showErrors(resp.jqXHR.responseJSON.errors, options);
-      //   }
-      // }
-
       if (resp.responseJSON) {
         this.showError(resp.responseJSON, options);
       } else if (resp.responseText) {
@@ -153,15 +140,15 @@ export default Ember.Service.extend({
     }
   },
 
-  closePassive: function() {
+  closePassive () {
     this.set('content', this.get('content').rejectBy('status', 'passive'));
   },
 
-  closePersistent: function() {
+  closePersistent () {
     this.set('content', this.get('content').rejectBy('status', 'persistent'));
   },
 
-  closeAll: function() {
+  closeAll () {
     this.get('content').clear();
   },
 
