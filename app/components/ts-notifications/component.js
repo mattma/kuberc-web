@@ -9,10 +9,9 @@ export default Ember.Component.extend({
   classNames:        'notifications',
   classNameBindings: ['location'],
 
-  @filter('notifications.content', notification => {
-    const displayStatus = (typeof notification.toJSON === 'function') ?
-        notification.get('status') : notification.status;
-
-    return displayStatus === 'passive';
+  @filter('notifications.content', function (notification) {
+    return typeof notification.toJSON === 'function' ?
+      notification.get('status') === 'passive' :
+      notification.status === 'passive';
   }) messages
 });
