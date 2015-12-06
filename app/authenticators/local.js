@@ -1,11 +1,10 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
 import ajax from 'dashboard/utils/ajax/ajax';
-const { service } = Ember.inject;
-const { RSVP } = Ember;
+const {RSVP, inject} = Ember;
 
 export default Base.extend({
-  session: service('session'),
+  session: inject.service('session'),
 
   authenticate (credentials) {
     // new user verify his/her account, we will auto log this user in
@@ -25,7 +24,7 @@ export default Base.extend({
         }
       };
 
-      // Need to return a promise because "login" need to wait for a promise object
+      // return a promise because "login" need to wait for a promise object
       return new RSVP.Promise((resolve, reject) => {
         return ajax(url, opts)
           .then(resp => resolve({token: resp.session.token, name: resp.session.name}))

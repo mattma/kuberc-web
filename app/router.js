@@ -8,10 +8,7 @@ let Router = Ember.Router.extend({
   location: config.locationType,
 
   clearNotifications: Ember.on('didTransition', function () {
-    const notifications = this.get('notifications');
-
-    notifications.closePassive();
-    notifications.displayDelayed();
+    this.get('notifications').displayDelayed();
   })
 });
 

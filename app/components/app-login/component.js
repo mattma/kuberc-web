@@ -1,29 +1,26 @@
 import Ember from 'ember';
 import ValidationEngine from 'dashboard/mixins/validation-engine';
-const { service } = Ember.inject;
+const {Component, inject, service} = Ember;
 
-export default Ember.Component.extend(ValidationEngine, {
-  notifications: service(),
-  session: service('session'),
+export default Component.extend(ValidationEngine, {
+  session: inject.service('session'),
 
   tagName: 'section',
-  validationType: 'signin',
+  validationType: 'login',
 
   actions: {
     authenticate () {
       const data = this.getProperties('identification', 'password');
       // authenticators/local.js#authenticate will handle the validation
       this.get('session').authenticate('authenticator:local', data)
+        .then(() =>  this.sendAction('clearAllNotifications'))
         .catch(err => this.sendAction('sessionAuthenticationFailed', err));
     },
 
     validateAndAuthenticate () {
-      // close all notifications if any
-      this.get('notifications').closePassive();
-
-      this.validate({format: false})
+      this.validate()
         .then(() => this.send('authenticate'))
-        .catch(err => this.sendAction('preAuthenticationFailed', err));
+        .catch(() => this.sendAction('preAuthenticationFailed', this.get("errors")));
     }
   }
 });

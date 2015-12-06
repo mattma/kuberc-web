@@ -1,10 +1,10 @@
-// put `password` at the end, so that we could add another verify password field
-// or other fields in the future without breaking the flow
-export default function PasswordValidator (validationErrors, password) {
-  if (!validator.isLength(password, 8)) {
-    validationErrors.push({
-      message: 'notification.password.length'
-    });
+import validator from 'validator';
+
+// put `password` at the end, so that we could add another verify password field or other fields in the future without breaking the flow
+export default function PasswordValidator (model, password) {
+  if (validator.empty(password) || !validator.isLength(password, 8)) {
+    model.get('errors').add('password', 'notification.password.length');
+    this.invalidate();
   } else {
     let hasUpperCase = true;
     let hasLowerCase = true;
@@ -26,11 +26,8 @@ export default function PasswordValidator (validationErrors, password) {
     // Need to have at least one special character
     // new RegExp('([!,%,&,@,#,$,^,*,?,_,~])');
     if (!hasUpperCase || !hasLowerCase || !hasNumbers) {
-      validationErrors.push({
-        message: 'notification.password.rule'
-      });
+      model.get('errors').add('password', 'notification.password.rule');
+      this.invalidate();
     }
   }
-
-  return validationErrors;
 }
