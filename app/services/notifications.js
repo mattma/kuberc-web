@@ -27,7 +27,7 @@ export default Service.extend({
     return get(notification, 'status') === 'notification';
   }) notifications,
 
-  handleNotification(message, delayed) {
+  handleNotification (message, delayed) {
     // If this is an alert message from the server, treat it as html safe
     if (typeof message.toJSON === 'function' && message.get('status') === 'alert') {
       message.set('message', message.get('message').htmlSafe());
@@ -37,12 +37,6 @@ export default Service.extend({
       set(message, 'status', 'notification');
     }
 
-    // close existing duplicate alerts/notifications to avoid stacking
-    if (get(message, 'key')) {
-      this._removeItems(get(message, 'status'), get(message, 'key'));
-    }
-
-    console.log('message: ', message);
     // message is an object which contains 3 properties: type, message, status
     // translate "message.message" property with "118n" support
     message.message = this.translator(message.message);
@@ -54,82 +48,57 @@ export default Service.extend({
     }
   },
 
-  showAlert(message, options={}) {
+  showAlert (message, options={}) {
     this.handleNotification({
       message,
       status: 'alert',
-      type: options.type,
-      key: options.key
+      type: options.type
     }, options.delayed);
   },
 
-  showNotification(message, options={}) {
+  showNotification (message, options={}) {
     if (!options.doNotCloseNotifications) {
       this.closeNotifications();
-    } else {
-      // TODO: this should be removed along with showErrors
-      options.key = undefined;
     }
 
     this.handleNotification({
       message,
       status: 'notification',
-      type: options.type,
-      key: options.key
+      type: options.type
     }, options.delayed);
   },
 
-  // TODO: review whether this can be removed once no longer used by validations
-  showErrors(errors, options={}) {
-    options.type = options.type || 'error';
-    // TODO: getting keys from the server would be useful here (necessary for i18n)
-    options.key = options.key || 'error';
-
+  showErrors (errors, options={}) {
     if (!options.doNotCloseNotifications) {
       this.closeNotifications();
     }
 
     // ensure all errors that are passed in get shown
     options.doNotCloseNotifications = true;
+    options.type = 'error';
 
-    if (options.key === 'api-error') {
+    if (options.kind === 'api') {
       this.showNotification(errors.title, options);
     } else {
-      let messages = errors.get("messages");
+      const messages = errors.get("messages");
+      const len = errors.get("length");
 
-      for (let i = 0; i < errors.get("length"); i += 1) {
-        // this.showNotification(errors[i].message || errors[i], options);
+      for (let i = 0; i < len; i++) {
         this.showNotification(messages[i], options);
       }
     }
   },
 
-  showAPIError(resp, options={}) {
-    options.type = options.type || 'error';
-    // TODO: getting keys from the server would be useful here (necessary for i18n)
-    options.key = options.key || 'api-error';
-
-    if (!options.doNotCloseNotifications) {
-      this.closeNotifications();
-    }
+  showAPIError (resp, options={}) {
+    options.kind = "api";
 
     options.defaultErrorText = options.defaultErrorText || 'There was a problem on the server, please try again.';
 
     if (resp) {
-      // if (resp && resp.jqXHR && resp.jqXHR.responseJSON && resp.jqXHR.responseJSON.error) {
-      //   this.showAlert(resp.jqXHR.responseJSON.error, options);
-      // } else if (resp && resp.jqXHR && resp.jqXHR.responseJSON && resp.jqXHR.responseJSON.errors) {
-      //   this.showErrors(resp.jqXHR.responseJSON.errors, options);
-      // } else if (resp && resp.jqXHR && resp.jqXHR.responseJSON && resp.jqXHR.responseJSON.message) {
-      //   this.showAlert(resp.jqXHR.responseJSON.message, options);
-      // } else {
-      //   this.showAlert(options.defaultErrorText, options);
-      // }
-
       if (resp.responseJSON) {
         this.showErrors(resp.responseJSON, options);
       } else if (resp.responseText) {
-        this.showErrors(JSON.parse(resp.responseText));
+        this.showErrors(JSON.parse(resp.responseText), options);
       } else if (resp.message) {
         // It is a simple plain object, which only contains message property
         this.showErrors(resp.message, options);
@@ -143,14 +112,14 @@ export default Service.extend({
     }
   },
 
-  displayDelayed() {
+  displayDelayed () {
     this.delayedNotifications.forEach((message) => {
       this.get('content').pushObject(message);
     });
     this.delayedNotifications = [];
   },
 
-  closeNotification(notification) {
+  closeNotification (notification) {
     let content = this.get('content');
 
     if (typeof notification.toJSON === 'function') {
@@ -163,19 +132,19 @@ export default Service.extend({
     }
   },
 
-  closeNotifications(key) {
+  closeNotifications (key) {
     this._removeItems('notification', key);
   },
 
-  closeAlerts(key) {
+  closeAlerts (key) {
     this._removeItems('alert', key);
   },
 
-  clearAll() {
+  clearAll () {
     this.get('content').clear();
   },
 
-  _removeItems(status, key) {
+  _removeItems (status, key) {
     if (key) {
       let keyBase = this._getKeyBase(key);
       // TODO: keys should only have . special char but we should
@@ -196,7 +165,7 @@ export default Service.extend({
 
   // take a key and return the first two elements, eg:
   // "invite.revoke.failed" => "invite.revoke"
-  _getKeyBase(key) {
+  _getKeyBase (key) {
     return key.split('.').slice(0, 2).join('.');
   },
 

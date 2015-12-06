@@ -10,7 +10,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   sessionInvalidated () {
     this.transitionTo(simpleAuthConfig.authenticationRoute);
     this.get('notifications')
-      .showSuccess('notification.token_verification.success_clear_token', {delayed: true});
+      .showNotification('notification.token_verification.success_clear_token', {delayed: true, type: 'success'});
   },
 
   actions: {

@@ -26,9 +26,9 @@ export default Component.extend({
   typeClass (type) {
     let classes = '';
     let typeMapping = {
-      success: 'green',
-      error: 'red',
-      warn: 'yellow'
+      success: 'success',
+      error: 'error',
+      warn: 'warn'
     };
 
     if (typeMapping[type] !== undefined) {
