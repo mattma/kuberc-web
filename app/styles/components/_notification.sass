@@ -14,6 +14,32 @@
     width: 300px
     transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1)
 
+.notification, .alert
+  // notification message body
+  .message
+    display: block
+    overflow: auto
+    +fsize(1.4)
+    line-height: 1.6em
+    -webkit-overflow-scrolling: touch
+
+  // Individual Notifications
+  // --------------------------------------------------
+  &.success
+    background: $green
+
+  &.error
+    background: $red
+
+  &.warn
+    background: #fdffb6
+
+  &.info
+    background: $blue
+
+  &.alert-dark
+    background: darkgrey
+
 .notification
   width: 100%
   min-height: 40px
@@ -34,15 +60,9 @@
   @media (max-width: 400px)
     margin-bottom: 1px
 
-  // notification message body
   .message
-    display: block
     padding: 10px 35px 10px 60px
     max-height: 253px
-    overflow: auto
-    +fsize(1.4)
-    line-height: 1.6em
-    -webkit-overflow-scrolling: touch
 
   // close button position
   .close
@@ -60,8 +80,6 @@
   // Individual Notifications
   // --------------------------------------------------
   &.success
-    background: $green
-
     &.passive
       animation: fade-out 1s linear
       animation-delay: 3s
@@ -71,8 +89,56 @@
       &:hover
         animation: fade-in-snap 0.2s linear
 
+.alerts
+  flex-shrink: 0
+  display: flex
+  flex-direction: column
+
+  // showing font color in contrast
+  .alert
+    .message
+      +color($white)
+
+    &.warn
+      .message
+        +color(#4E5E6A)
+
+      .close
+        +color(#4E5E6A)
+
+        &:hover
+          +color(darkgrey)
+
+.alert
+  z-index: 1000
+  flex-grow: 1
+  display: flex
+  justify-content: space-between
+  align-items: center
+  +paddings(10px, 15px)
+  border-bottom: 1px solid #dfe1e3
+
+  .message
+    +margin(b, 0)
+
+  .close
+    flex-shrink: 0
+    +margins(0)
+    color: rgba(255, 255, 255, 0.6)
+    &:hover
+      color: $white
+
   &.error
-    background: $red
+    border-bottom: 1px solid lighten($red, 10%)
+
+  &.success
+    border-bottom: 1px solid lighten($green, 7%)
+
+  &.alert-dark
+    border-bottom: 1px solid lighten(darkgrey, 10%)
 
   &.warn
-    background: yellow
+    border-bottom: #e9ebb6 1px solid
+
+  &.info
+    border-bottom: 1px solid lighten($blue, 10%)

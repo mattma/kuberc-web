@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import simpleAuthConfig from 'ember-simple-auth/configuration';
-const { service } = Ember.inject;
+const {Route, inject} = Ember;
 
-export default Ember.Route.extend(ApplicationRouteMixin, {
-  notifications: service(),
+export default Route.extend(ApplicationRouteMixin, {
+  notifications: inject.service(),
 
   // trigger by logout route when user successfully logout
   sessionInvalidated () {
@@ -16,6 +16,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   actions: {
     logout () {
       this.transitionTo('logout');
-    }
+    },
+
+    topNotificationChange (count=0) {
+      this.set('topNotificationCount', count);
+    },
   }
 });
