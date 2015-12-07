@@ -15,14 +15,14 @@ describe('Application', function() {
     Ember.run(application, 'destroy');
   });
 
-  describe('main layout', () => {
-    it('should have a header', () => {
+  describe('Root path', () => {
+    it('should redirect to login page', () => {
       visit('/');
 
       return andThen(() => {
-        expect(currentPath()).to.eq('index');
-        let headerText = find('h2').text();
-        expect(headerText).to.eq('Welcome to Ember');
+        expect(currentPath()).to.eq('login');
+        let headerText = find('h1').text();
+        expect(headerText).contains('Kuberc');
       });
     });
   });

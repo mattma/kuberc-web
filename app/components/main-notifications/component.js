@@ -1,5 +1,7 @@
 import Ember from 'ember';
+// start-non-standard
 import {alias} from 'ember-computed-decorators';
+// end-non-standard
 const {Component, inject} = Ember;
 
 export default Component.extend({
@@ -8,5 +10,7 @@ export default Component.extend({
   tagName: 'aside',
   classNames: 'notifications',
 
+  // start-non-standard
   @alias('notifications.notifications') messages
+  // end-non-standard
 });

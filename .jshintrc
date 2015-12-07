@@ -29,6 +29,9 @@
   "strict": false,
   "white": false,
   "eqnull": true,
+  "ignoreDelimiters": [
+    { "start": "start-non-standard", "end": "end-non-standard" }
+  ],
   "esnext": true,
   "unused": true
 }

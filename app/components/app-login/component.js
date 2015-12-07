@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ValidationEngine from 'dashboard/mixins/validation-engine';
-const {Component, inject, service} = Ember;
+const {Component, inject} = Ember;
 
 export default Component.extend(ValidationEngine, {
   session: inject.service('session'),

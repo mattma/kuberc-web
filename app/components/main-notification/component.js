@@ -1,5 +1,7 @@
 import Ember from 'ember';
+// start-non-standard
 import computed from 'ember-computed-decorators';
+// end-non-standard
 const {Component, inject} = Ember;
 
 export default Component.extend({
@@ -22,7 +24,9 @@ export default Component.extend({
    this.$().off('animationend webkitAnimationEnd oanimationend MSAnimationEnd');
   },
 
+  // start-non-standard
   @computed('message.type')
+  // end-non-standard
   typeClass (type) {
     let classes = '';
     let typeMapping = {

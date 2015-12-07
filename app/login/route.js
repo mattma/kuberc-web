@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 import styleBody from 'dashboard/mixins/style-body';
-const {Route, Object, inject} = Ember;
+const {Route, inject} = Ember;
 const {Errors} = DS;
 
 export default Route.extend(UnauthenticatedRouteMixin, styleBody, {
@@ -11,7 +11,7 @@ export default Route.extend(UnauthenticatedRouteMixin, styleBody, {
   classNames: ['page', 'login'],
 
   model() {
-    return Object.create({
+    return Ember.Object.create({
       identification: '',
       password: '',
       errors: Errors.create()
