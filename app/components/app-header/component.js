@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { alias } from 'ember-computed-decorators';
-const { service } = Ember.inject;
+const {Component, inject} = Ember;
 
-export default Ember.Component.extend({
-  session: service('session'),
-  sess: service('session-account'),
+export default Component.extend({
+  session: inject.service('session'),
+  sess: inject.service('session-account'),
 
   // sessionUser: an object contains current login user info
   @alias('sess.sessionUser.content') sessionUser,

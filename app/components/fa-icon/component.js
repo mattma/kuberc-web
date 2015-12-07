@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import computed from 'ember-computed-decorators';
+const {Component} = Ember;
 
 // ES7 Decorator: https://github.com/rwjblue/ember-computed-decorators
 // https://github.com/martndemus/ember-cli-font-awesome/blob/master/addon/components/fa-icon.js
@@ -7,7 +8,7 @@ function match (object, regex) {
   return (typeof object) === 'string' && object.match(regex);
 }
 
-const FaIconComponent = Ember.Component.extend({
+const FaIconComponent = Component.extend({
   tagName: 'i',
   classNames: ['fa'],
   classNameBindings: [
