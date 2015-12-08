@@ -1,5 +1,7 @@
 import Ember from 'ember';
-import { alias } from 'ember-computed-decorators';
+// start-non-standard
+import {alias} from 'ember-computed-decorators';
+// end-non-standard
 const {Component, inject} = Ember;
 
 export default Component.extend({
@@ -7,7 +9,9 @@ export default Component.extend({
   sess: inject.service('session-account'),
 
   // sessionUser: an object contains current login user info
+  // start-non-standard
   @alias('sess.sessionUser.content') sessionUser,
+  // end-non-standard
 
   actions: {
     // application/route.js will handle the logout action

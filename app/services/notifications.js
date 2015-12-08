@@ -1,7 +1,8 @@
 import Ember from 'ember';
-
-const {Service, inject, get, set} = Ember;
+// start-non-standard
 import {filter} from 'ember-computed-decorators';
+// end-non-standard
+const {Service, inject, get, set} = Ember;
 const emberA = Ember.A;
 
 // Notification keys take the form of "noun.verb.message", eg:
@@ -19,13 +20,17 @@ export default Service.extend({
   delayedNotifications: emberA(),
   content: emberA(),
 
+  // start-non-standard
   @filter('content', function (notification) {
     return get(notification, 'status') === 'alert';
   }) alerts,
+  // end-non-standard
 
+  // start-non-standard
   @filter('content', function (notification) {
     return get(notification, 'status') === 'notification';
   }) notifications,
+  // end-non-standard
 
   handleNotification (message, delayed) {
     // If this is an alert message from the server, treat it as html safe

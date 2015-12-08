@@ -1,5 +1,7 @@
 import Ember from 'ember';
+// start-non-standard
 import computed from 'ember-computed-decorators';
+// end-non-standard
 const {Component} = Ember;
 
 // ES7 Decorator: https://github.com/rwjblue/ember-computed-decorators
@@ -16,7 +18,9 @@ const FaIconComponent = Component.extend({
     'sizeCssClass'
   ],
 
+  // start-non-standard
   @computed('icon', 'params.[]')
+  // end-non-standard
   iconCssClass(icon, params) {
     icon = icon || params[0];
     if (icon) {
@@ -24,7 +28,9 @@ const FaIconComponent = Component.extend({
     }
   },
 
+  // start-non-standard
   @computed('size')
+  // end-non-standard
   sizeCssClass(size) {
     if (match(size, /^fa-/)) {
       return size;

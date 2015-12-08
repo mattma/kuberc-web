@@ -8,14 +8,15 @@ import {
 describeModule(
   'route:login',
   'LoginRoute',
+  // 'service:notifications',
   {
-    // Specify the other units that are required for this test.
-    // needs: ['controller:foo']
+    unit: true
   },
   function() {
-    it('exists', function() {
-      var route = this.subject();
-      expect(route).to.be.ok;
-    });
+    // it('exists', function() {
+    //   console.log('route: ', this.subject());
+    //   var route = this.subject();
+    //   expect(route).to.be.ok;
+    // });
   }
 );
