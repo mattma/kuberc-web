@@ -5,7 +5,8 @@ import { alias } from 'ember-computed-decorators';
 const {Component} = Ember;
 
 export default Component.extend({
-  tagName: 'nav',
+  tagName: 'section',
+  classNames: ['main-nav'],
 
   // targetObject: required keyword to send action to parent component
   // start-non-standard
