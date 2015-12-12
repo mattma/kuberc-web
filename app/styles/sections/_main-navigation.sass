@@ -32,3 +32,48 @@ $main-navigation-height: 49px
     +box
     +position(a, 15, 15, r)
 
+  // above 768px
+  ul
+    +box(auto, 49)
+    +overflow(h)
+
+    &.nav-group-right
+      +float(r)
+
+      li
+        &:last-child
+          +padding(r, 0)
+
+  li
+    div
+      +position(r)
+
+    .wrapper
+      +paddings(15)
+
+    .hybird-wrapper
+      +box(auto, $main-navigation-height)
+      +paddings(0, 15)
+
+      &:hover
+        background: rgb(233, 233, 233)
+        cursor: pointer
+
+    .badge
+      +position(a, 6, 6, r)
+
+  // user icon
+  .avatar
+    +paddings(0)
+    +margins(10, 0, 0)
+    +display(b)
+    +float(l)
+    border-radius: 50%
+
+  .user-firstname
+    +box(auto, $main-navigation-height)
+    +padding(l, 8)
+    +fsize(1.6)
+    +lheight($main-navigation-height)
+    +ttransform(c)
+

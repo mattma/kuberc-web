@@ -10,7 +10,7 @@
   {{fa-icon "search" size="2"}}
 </div>
 
-<ul class="show-for-s nav navbar-nav navbar-left">
+<ul class="show-for-l nav-group-left">
   <li>
     {{fa-icon "bars" size="2"}}
   </li>
@@ -22,24 +22,30 @@
   </li>
 </ul>
 
-<ul class="show-for-s nav navbar-nav navbar-right">
+<ul class="show-for-s nav-group-right">
   <li>
-    {{fa-icon "search" size="2"}}
+    <div class="wrapper">
+      {{fa-icon "search" size="2"}}
+    </div>
   </li>
   <li>
-    {{fa-icon "envelope" size="2"}}
-    <span class="badge badge-success pull-right">4</span>
+    <div class="wrapper">
+      {{fa-icon "envelope" size="2"}}
+      <span class="badge badge-success">4</span>
+    </div>
   </li>
   <li>
-    {{fa-icon "bell" size="2"}}
-    <span class="badge badge-success pull-right">3</span>
+    <div class="wrapper">
+      {{fa-icon "bell" size="2"}}
+      <span class="badge badge-success">3</span>
+    </div>
   </li>
   <li>
-    <span class="user-name">
-      {{s.firstName}}
-      {{fa-icon "angle-down" size="2"}}
-    </span>
-    <img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">
+    <div class="hybird-wrapper">
+      <img class="avatar" src="/images/headers/default_user.png" width="30" height="30" alt="">
+      <strong class="user-firstname">{{s.firstName}}</strong>
+      {{! fa-icon "angle-down" size="2"}}
+    </div>
   </li>
   <li>
     <button {{action "logoutAction"}}>
