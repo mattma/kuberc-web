@@ -15,7 +15,32 @@
   animation: fade-out 0.5s
   animation-fill-mode: forwards
 
+// Color
+.bg-white
+  +bcolor($white)
+
 // Sections
-.main-container-s
-  +margins(0)
+// xs: 320px, s: 480px, m: 768px, l: 1024px, xl: 1364px
+// Default style: iphone portrait
+.main-container
+  +margins(0, auto)
   +paddings(0, 15)
+
+  // above 480px styles
+  // iphone landscape
+  // +breakpoint("s")
+
+  // above 768px styles
+  // ipad portrait
+  +breakpoint("m")
+    +width(750)
+
+  // above 1024px styles
+  // ipad landscape
+  +breakpoint("l")
+    +width(970)
+
+  // above 1364px styles
+  // desktop
+  +breakpoint("xl")
+    +width(1170)

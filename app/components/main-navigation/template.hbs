@@ -1,51 +1,49 @@
-<div class="main-container main-navigation">
-  <div class="hide-for-s sidebar-menu-btn">
-    {{fa-icon "bars" size="2"}}
-  </div>
-
-  <h1>
-    <a href="#" title="Kuberc">Kuberc</a>
-  </h1>
-
-  <div class="hide-for-s search-btn">
-    {{fa-icon "search" size="2"}}
-  </div>
-
-  <ul class="show-for-s nav navbar-nav navbar-left">
-    <li>
-      {{fa-icon "bars" size="2"}}
-    </li>
-    <li>
-      {{fa-icon "expand" size="2"}}
-    </li>
-    <li class="dropdown">
-      {{fa-icon "cogs" size="2"}}
-    </li>
-  </ul>
-
-  <ul class="show-for-s nav navbar-nav navbar-right">
-    <li>
-      {{fa-icon "search" size="2"}}
-    </li>
-    <li>
-      {{fa-icon "envelope" size="2"}}
-      <span class="badge badge-success pull-right">4</span>
-    </li>
-    <li>
-      {{fa-icon "bell" size="2"}}
-      <span class="badge badge-success pull-right">3</span>
-    </li>
-    <li>
-      <span class="user-name">
-        {{s.firstName}}
-        {{fa-icon "angle-down" size="2"}}
-      </span>
-      <img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">
-    </li>
-    <li>
-      <button {{action "logoutAction"}}>
-        {{t "setting.button.logout"}}
-      </button>
-    </li>
-  </ul>
+<div class="hide-for-s sidebar-menu-btn">
+  {{fa-icon "bars" size="2"}}
 </div>
+
+<h1>
+  <a href="#" title="Kuberc">Kuberc</a>
+</h1>
+
+<div class="hide-for-s search-btn">
+  {{fa-icon "search" size="2"}}
+</div>
+
+<ul class="show-for-s nav navbar-nav navbar-left">
+  <li>
+    {{fa-icon "bars" size="2"}}
+  </li>
+  <li>
+    {{fa-icon "expand" size="2"}}
+  </li>
+  <li class="dropdown">
+    {{fa-icon "cogs" size="2"}}
+  </li>
+</ul>
+
+<ul class="show-for-s nav navbar-nav navbar-right">
+  <li>
+    {{fa-icon "search" size="2"}}
+  </li>
+  <li>
+    {{fa-icon "envelope" size="2"}}
+    <span class="badge badge-success pull-right">4</span>
+  </li>
+  <li>
+    {{fa-icon "bell" size="2"}}
+    <span class="badge badge-success pull-right">3</span>
+  </li>
+  <li>
+    <span class="user-name">
+      {{s.firstName}}
+      {{fa-icon "angle-down" size="2"}}
+    </span>
+    <img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">
+  </li>
+  <li>
+    <button {{action "logoutAction"}}>
+      {{t "setting.button.logout"}}
+    </button>
+  </li>
+</ul>
