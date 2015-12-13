@@ -9,7 +9,7 @@
     "ember-resolver": "~0.1.20",
     "jquery": "^2.1.4",
     "loader.js": "ember-cli/loader.js#3.4.0",
-    "mvccss": "mattma/mvc-css#0.5.0",
+    "mvccss": "mattma/mvc-css#0.5.1",
     "validator-js": "~4.4.0",
     "ember-mocha": "~0.8.6",
     "sinonjs": "~1.17.1",

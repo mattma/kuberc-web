@@ -11,6 +11,7 @@ $main-navigation-height: 49px
     +box(100%, $main-navigation-height)
     +float(s)
     +fsize
+    +margin(r, 30)
 
     // above 480px styles
     +breakpoint("s")
@@ -33,9 +34,14 @@ $main-navigation-height: 49px
     +position(a, 15, 15, r)
 
   // above 768px
-  .nav-group-right
+  .nav-group
     +box(auto, 49)
-    +float(r)
+
+    &.left
+      +float(l)
+
+    &.right
+      +float(r)
 
     & > li
       & > div
@@ -72,4 +78,3 @@ $main-navigation-height: 49px
     +fsize(1.6)
     +lheight($main-navigation-height)
     +ttransform(c)
-
