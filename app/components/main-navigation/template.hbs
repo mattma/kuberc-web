@@ -41,15 +41,20 @@
     </div>
   </li>
   <li>
-    <div class="hybird-wrapper">
+    <div class="hybird-wrapper dropdown {{if showUserDropdown 'open' ''}}"
+      {{action "toggleUserDropdown"}}>
       <img class="avatar" src="/images/headers/default_user.png" width="30" height="30" alt="">
       <strong class="user-firstname">{{s.firstName}}</strong>
       {{! fa-icon "angle-down" size="2"}}
+
+      <ul class="dropdown-menu arrow-right">
+        <li>
+          {{#link-to 'logout'}}
+            {{fa-icon "sign-out"}}
+            {{t "setting.button.logout"}}
+          {{/link-to}}
+        </li>
+      </ul>
     </div>
-  </li>
-  <li>
-    <button {{action "logoutAction"}}>
-      {{t "setting.button.logout"}}
-    </button>
   </li>
 </ul>
