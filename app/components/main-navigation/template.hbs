@@ -35,9 +35,41 @@
     </div>
   </li>
   <li>
-    <div class="wrapper">
+    <div class="wrapper dropdown {{if showTasksDropdown 'open' ''}}"
+      {{action "toggleTasksDropdown"}}>
       {{fa-icon "bell" size="2"}}
       <span class="badge badge-success">3</span>
+
+      <ul class="dropdown-menu arrow-right size-l">
+        <li>
+          <p class="dropdown-title">You have 3 pending tasks !</p>
+        </li>
+        <li>
+          <ul class="dropdown-notifications">
+            <li>
+              <a href="#">
+                <p>{{fa-icon "thumbs-up"}} New user registered.</p>
+                <span class="badge badge-roundless badge-default">1min ago</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <p>{{fa-icon "bomb"}} Database error.</p>
+                <span class="badge badge-roundless badge-default">24min ago</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="badge badge-roundless badge-default pull-right">1h ago</span>
+                <p>{{fa-icon "heart"}} Reached 24k likes</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="drop-all">
+          <a href="#">All Tasks</a>
+        </li>
+      </ul>
     </div>
   </li>
   <li>
@@ -49,7 +81,23 @@
 
       <ul class="dropdown-menu arrow-right">
         <li>
-          {{#link-to 'logout'}}
+          <a href="#" title="">
+            {{fa-icon "user"}} Profile
+          </a>
+        </li>
+        <li>
+          <a href="#" title="">
+            {{fa-icon "calendar"}} Calendar
+          </a>
+        </li>
+        <li>
+          <a href="#" title="">
+            {{fa-icon "envelope"}} Inbox
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          {{#link-to 'logout' classNames='tab-item'}}
             {{fa-icon "sign-out"}}
             {{t "setting.button.logout"}}
           {{/link-to}}

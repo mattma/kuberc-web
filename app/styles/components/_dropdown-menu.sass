@@ -12,12 +12,13 @@
 
     li
       min-width: 160px
+      +width(100%)
 
-      &.size-m
-        min-width: 210px
+    &.size-m li
+      min-width: 210px
 
-      &.size-l
-        min-width: 260px
+    &.size-l li
+      min-width: 260px
 
 .dropdown-menu
   position: absolute
@@ -100,3 +101,61 @@
       margin: 9px 0
       overflow: hidden
       background-color: #e5e5e5
+
+    &.drop-all a
+      padding: 10px
+      color: #707070
+      background: #FFF
+      +fsize(1.4)
+      +talign(c)
+
+      &:hover
+        background: #f7f7f7
+
+  .dropdown-title
+    display: block
+    border-bottom: 1px solid #F3F3F3
+    +fsize(1.4)
+    background: $white
+    padding: 12px
+    color: #6a6a6a
+    margin: 0px
+
+  .dropdown-notifications
+    max-height: 300px
+    +box(100%, 100%)
+    +float(l)
+    +margins(0)
+    +paddings(0)
+
+    li
+      border-bottom: 1px solid #f3f3f3
+
+      a
+        color: #bababa
+        +fsize(1.3)
+        +paddings(10, 0, 10, 15)
+        position: relative
+
+        &:hover
+          background: #f7f7f7
+
+        .badge
+          top: 10px
+
+      p
+        +margins(3, 0)
+
+    li a
+      .task-details
+        display: block
+        font-size: 13px
+        color: #868686
+        padding: 3px 0 0 0
+        margin: 0px
+        float: left
+        width: 148px
+      .badge
+        margin: 0px
+        margin-right: 5px
+        max-width: 85px
