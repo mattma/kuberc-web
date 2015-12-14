@@ -1,0 +1,116 @@
+$secondary-navigation-height: 39px
+
+.secondary-navigation
+  +box(50, 100%)
+  +bcolor($white)
+
+  +breakpoint("m")
+    +box(100%, 40)
+    +border(b, rgb(233, 233, 233))
+
+  &:before
+    background-color: inherit
+    bottom: 0
+    content: ""
+    position: absolute
+    top: 0
+    width: inherit
+    +border(r, rgb(233, 233, 233))
+
+    +breakpoint("m")
+      +display(n)
+
+  .menu
+    +position(r)
+    +box(50, 100%)
+    +float(l)
+    +margins(0)
+
+    +breakpoint("m")
+      +box(750, $secondary-navigation-height)
+      +float(n)
+      +paddings(0, 15)
+      +margins(0, auto)
+
+    // above 1024px styles
+    // ipad landscape
+    +breakpoint("l")
+      +width(970)
+
+    // above 1364px styles
+    // desktop
+    +breakpoint("xl")
+      +width(1170)
+
+    // above 1776px styles
+    // Mac 27 inch Monitor
+    +breakpoint("xxl")
+      +width(1582)
+
+  p
+    +margin(b, 0)
+
+  .menu-list
+    & > a
+      +paddings(15)
+
+    .fa
+      +fsize(1.6)
+
+  .sub-menu
+    display: none
+
+
+// above 768px styles
++breakpoint("m")
+  .secondary-navigation
+    .menu
+      & > ul
+        +box(auto, $secondary-navigation-height)
+        +margins(0, auto)
+
+    .menu-list
+      +float(l)
+
+      & > a
+        +paddings(12, 15)
+
+// above 1776px styles
+// Mac 27 inch Monitor
++breakpoint("l")
+  .secondary-navigation
+    .menu-list
+      +height($secondary-navigation-height)
+
+      & > a
+        height: inherit
+        +paddings(0, 25, 0, 0)
+
+      .fa
+        +box(20, 20)
+        +margin(t, 12)
+        +display(b)
+        +float(l)
+
+      p
+        +margin(l, 2)
+        +float(l)
+        +lheight($secondary-navigation-height)
+
+// above 1364px styles
+// desktop
++breakpoint("xl")
+  .secondary-navigation
+    .menu-list
+      & > a
+        +paddings(0, 40, 0, 0)
+
+// above 1776px styles
+// Mac 27 inch Monitor
++breakpoint("xxl")
+  .secondary-navigation
+    .menu-list
+      & > a
+        +paddings(0, 55, 0, 0)
+
+

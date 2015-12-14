@@ -22,7 +22,7 @@
 // Sections
 // xs: 320px, s: 480px, m: 768px, l: 1024px, xl: 1364px
 // Default style: iphone portrait
-.main-container
+%responsive-layout
   +margins(0, auto)
   +paddings(0, 15)
 
@@ -49,3 +49,6 @@
   // Mac 27 inch Monitor
   +breakpoint("xxl")
     +width(1582)
+
+.main-container
+  @extend %responsive-layout
