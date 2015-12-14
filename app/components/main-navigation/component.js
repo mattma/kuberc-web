@@ -3,12 +3,7 @@ import Ember from 'ember';
 import { alias } from 'ember-computed-decorators';
 // end-non-standard
 const {Component} = Ember;
-
-function toggleDropdownUtil (property, context) {
-  context.get(property) ?
-    context.set(property, false) :
-    context.set(property, true);
-}
+import togglePropUtils from 'dashboard/utils/toggle-property';
 
 export default Component.extend({
   tagName: 'nav',
@@ -24,8 +19,7 @@ export default Component.extend({
   // end-non-standard
 
   actions: {
-    // Need to remove, here for education purpose
-    // parent component will handle "logoutAction"
+    // parent component will handle "toggleSidebar"
     toggleSidebar () {
       // it has to update "action" property to be able to `sendAction`
       this.set('action', 'toggleSidebar');
@@ -33,11 +27,11 @@ export default Component.extend({
     },
 
     toggleUserDropdown () {
-      toggleDropdownUtil('showUserDropdown', this);
+      togglePropUtils('showUserDropdown', this);
     },
 
     toggleTasksDropdown () {
-      toggleDropdownUtil('showTasksDropdown', this);
+      togglePropUtils('showTasksDropdown', this);
     }
   }
 });
