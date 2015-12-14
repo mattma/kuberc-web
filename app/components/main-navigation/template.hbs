@@ -1,4 +1,5 @@
-<div class="hide-for-s sidebar-menu-btn">
+<div class="hide-for-s sidebar-menu-btn"
+  {{action "toggleSidebar"}}>
   {{fa-icon "bars" size="2"}}
 </div>
 
@@ -12,7 +13,7 @@
 
 <ul class="show-for-l nav-group left">
   <li>
-    <div class="wrapper">
+    <div class="wrapper" {{action "toggleSidebar"}}>
       {{fa-icon "bars" size="2"}}
     </div>
   </li>

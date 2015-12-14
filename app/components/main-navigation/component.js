@@ -26,9 +26,9 @@ export default Component.extend({
   actions: {
     // Need to remove, here for education purpose
     // parent component will handle "logoutAction"
-    logoutAction () {
+    toggleSidebar () {
       // it has to update "action" property to be able to `sendAction`
-      this.set('action', 'logoutAction');
+      this.set('action', 'toggleSidebar');
       this.sendAction();
     },
 

@@ -14,10 +14,6 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   actions: {
-    logout () {
-      this.transitionTo('logout');
-    },
-
     topNotificationChange (count=0) {
       this.set('topNotificationCount', count);
     },
